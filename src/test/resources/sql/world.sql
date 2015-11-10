@@ -9,7 +9,7 @@ create table member (
 	email			varchar(255),
 	name			varchar(255),
 	password 		varchar(255),
-	regiter_date	date,
+	register_date	date,
 	constraint pk_id primary key (id)
 );
 
@@ -18,9 +18,9 @@ create table member (
 --
 --Create
 insert into member
-(email, name, password, regiter_date)
+(email, name, password, register_date)
 values
-('xxx@yyy','홍길동','1234','2015/11/11')
+('xxx@yyy','홍길동3','1234','2015/11/11')
 
 --Read 
 select * from member;
