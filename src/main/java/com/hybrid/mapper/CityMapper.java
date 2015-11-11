@@ -7,6 +7,6 @@ public interface CityMapper {
 
 	List<City> selectAll();
 	List<City> selectByCountryCode(String countryCode);
-	
+	  
 	
 }
