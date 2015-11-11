@@ -30,3 +30,25 @@ update member set name= '홍순이2', password ='9876' where id=5;
 
 --Delete
 delete from member;
+
+
+
+
+--City
+--
+--selectAll
+select  id,
+		name,
+		countrycode,
+		district,
+		population
+   from city
+
+--selectByCountryCode(String countryCode)  
+ select id,
+		name,
+		countrycode,
+		district,
+		population
+   from city
+  where countrycode = 'KOR'
