@@ -17,8 +17,6 @@ public class CityMapperTest {
 		
 		GenericXmlApplicationContext ctx = null;
 		ctx = new GenericXmlApplicationContext("spring/beans_dao.xml");
-		
-		
 		CityMapper cityMapper = ctx.getBean(CityMapper.class);
 		
 		List<City> list = cityMapper.selectAll();

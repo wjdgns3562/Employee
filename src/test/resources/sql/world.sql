@@ -15,7 +15,7 @@ create table member (
 
 --
 --Member CRUD(Create, Read, Update, Delete)
---
+--DML(Data Manipulation Language)
 --Create
 insert into member
 (email, name, password, register_date)
