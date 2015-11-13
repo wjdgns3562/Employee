@@ -43,7 +43,7 @@ create table city (
   constraint city_pk_id primary key (id)
 );
 
-delete from city
+delete from city;
 
 
 insert into city
@@ -62,3 +62,31 @@ values
 	'Asia',
 	99998
 )
+
+
+
+--
+--
+--
+
+select * from emp;
+ 
+select d.deptno as dept_deptno,
+	   d.dname  as dept_dname,
+	   d.loc	as dept_loc,
+	   e.empno  as emp_empno,
+	   e.ename  as emp_ename,
+	   e.job	as emp_job
+  from dept d inner join emp e
+    on d.deptno = e.deptno
+    
+    
+select d.deptno as dept_deptno,
+	   d.dname  as dept_dname,
+	   d.loc	as dept_loc,
+	   e.empno  as emp_empno,
+	   e.ename  as emp_ename,
+	   e.job	as emp_job
+  from dept d left outer join emp e
+    on d.deptno = e.deptno
+ 
