@@ -7,7 +7,7 @@ import com.hybrid.exception.PasswordNotMatchingException;
 public class City {
 	private int id;
 	private String name;
-	private String countyCode;
+	private String countryCode;
 	private String district;
 	private Integer population;
 	public int getId() {
@@ -22,11 +22,11 @@ public class City {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCountyCode() {
-		return countyCode;
+	public String getCountryCode() {
+		return countryCode;
 	}
-	public void setCountyCode(String countyCode) {
-		this.countyCode = countyCode;
+	public void setCountryCode(String countryCode) {
+		this.countryCode = countryCode;
 	}
 	public String getDistrict() {
 		return district;
@@ -40,5 +40,6 @@ public class City {
 	public void setPopulation(Integer population) {
 		this.population = population;
 	}
+	
 	
 }

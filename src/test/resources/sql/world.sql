@@ -39,7 +39,7 @@ delete from member;
 --selectAll
 select  id,
 		name,
-		countrycode,
+		countryCode,
 		district,
 		population
    from city
@@ -47,8 +47,8 @@ select  id,
 --selectByCountryCode(String countryCode)  
  select id,
 		name,
-		countrycode,
+		countryCode,
 		district,
 		population
    from city
-  where countrycode = 'KOR'
+  where countryCode = 'KOR'
