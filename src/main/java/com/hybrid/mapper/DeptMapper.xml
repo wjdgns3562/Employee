@@ -7,7 +7,36 @@
         	   loc
           from dept
     </sql>
-
+	<sql id="deptFromWithEmp">
+	    select d.deptno 	as dept_deptno,
+	  		   d.dname  	as dept_dname,
+	  		   d.loc		as dept_loc,
+	  		   e.empno		as emp_empno,
+	  		   e.ename 		as emp_ename,
+	  		   e.job		as emp_job,
+	  		   e.mgr		as emp_mgr,
+	  		   e.hiredate 	as emp_hiredate,
+	  		   e.sal		as emp_sal,
+	  		   e.deptno		as emp_deptno
+  		  from dept d inner join emp e
+  		    on d.deptno = e.deptno
+	</sql>
+	<sql id="deptFromWithEmp_outer">
+	    select d.deptno 	as dept_deptno,
+	  		   d.dname  	as dept_dname,
+	  		   d.loc		as dept_loc,
+	  		   e.empno		as emp_empno,
+	  		   e.ename 		as emp_ename,
+	  		   e.job		as emp_job,
+	  		   e.mgr		as emp_mgr,
+	  		   e.hiredate 	as emp_hiredate,
+	  		   e.sal		as emp_sal,
+	  		   e.deptno		as emp_deptno
+  		  from dept d inner join emp e
+  		    on d.deptno = e.deptno
+	</sql>
+    
+    
 	<select id="selectAll" resultType="com.hybrid.model.Dept">
 	    <include refid="deptForm"/>
 	    select deptno,
@@ -25,20 +54,27 @@
 	</select>
 	
 	<resultMap id="deptResultMap" type="com.hybrid.model.Dept">
-	    <id property="deptno" column="deptno"/>
-	    <result property="dname" column="dnames"/>
-	    <result property="loc" column="loc"/>
+	    <id property="deptno" column="dept_deptno"/>
+	    <result property="dname" column="dept_dname"/>
+	    <result property="loc" column="dept_loc"/>
+	    <collection property="emps" ofType="com.hybrid.model.Emp">
+	        <id property="empno" column="emp_empno"/>
+	        <result property="ename" column="emp_ename"/>
+	        <result property="job" column="emp_job"/>
+	        <result property="mgr" column="emp_mgr"/>
+	        <result property="hiredate" column="emp_hiredate"/>
+	        <result property="sal" column="emp_sal"/>
+	        <association property="dept" resultMap="deptResultMap"></association>
+	    </collection>
 	</resultMap>
 	
 	<select id="selectAllWithEmps" resultMap="deptResultMap">
-	    select deptno,
-        	   dname,
-        	   loc
-          from dept
+	   <include refid="deptFromWithEmp_outer"/>
 	</select>
 	
-	<select id="selectByDeptnoWithEmps">
-	    
+	<select id="selectByDeptnoWithEmps" resultMap="deptResultMap">
+	    <include refid="deptFromWithEmp"/>
+  		 where d.deptno = #{deptno}
 	</select>
 	
 </mapper>
