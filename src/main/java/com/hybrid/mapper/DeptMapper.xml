@@ -10,22 +10,34 @@
 
 	<select id="selectAll" resultType="com.hybrid.model.Dept">
 	    <include refid="deptForm"/>
+	    select deptno,
+        	   dname,
+        	   loc
+          from dept
 	</select>
 	
 	<select id="selectByDeptno" resultType="com.hybrid.model.Dept">
-	    <include refid="deptForm"/>
-	    where deptno = #{deptno}
+	  	select deptno,
+        	   dname,
+        	   loc
+          from dept
+	     where deptno = #{deptno}
 	</select>
 	
-	<select id="selectAllWithEmps">
-	    
-	    
-	    
+	<resultMap id="deptResultMap" type="com.hybrid.model.Dept">
+	    <id property="deptno" column="deptno"/>
+	    <result property="dname" column="dnames"/>
+	    <result property="loc" column="loc"/>
+	</resultMap>
+	
+	<select id="selectAllWithEmps" resultMap="deptResultMap">
+	    select deptno,
+        	   dname,
+        	   loc
+          from dept
 	</select>
 	
 	<select id="selectByDeptnoWithEmps">
-	    
-	    
 	    
 	</select>
 	

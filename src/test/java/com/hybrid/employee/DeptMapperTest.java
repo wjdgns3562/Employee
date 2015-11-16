@@ -18,8 +18,8 @@ public class DeptMapperTest {
 		
 		DeptMapper deptMapper = ctx.getBean(DeptMapper.class);
 		
-		List<Dept> list = deptMapper.selectAll();
-		
+		//List<Dept> list = deptMapper.selectAll();
+		List<Dept> list = deptMapper.selectAllWithEmps();
 		list.forEach(new Consumer<Dept>() {
 			@Override
 			public void accept(Dept t) {
