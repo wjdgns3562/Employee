@@ -13,19 +13,13 @@
 		   from emp
 	</sql>
 	
-	<select id="selectAll" resultMap="">
-		
-	    
-	    
-	    
-	    
+	<select id="selectAll">
+		 <include refid="empForm"/>
 	</select>
 
 	<select id="selectByEmpno">
-	    
-	    
-	    
-	    
+	    <include refid="empForm"/>
+	    where empno = #{empno}
 	</select>
 	
 	<resultMap id="empResultWithDept" type="com.hybrid.model.Emp">
