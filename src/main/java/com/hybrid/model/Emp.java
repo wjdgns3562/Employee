@@ -14,7 +14,7 @@ public class Emp {
 	private Float sal;
 	private Float comm;
 	private int deptno;
-	private Dept dept;
+	private Dept dept;		//Has-One
 	
 	public int getEmpno() {
 		return empno;

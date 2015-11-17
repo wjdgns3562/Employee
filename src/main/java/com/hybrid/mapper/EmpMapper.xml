@@ -1,6 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.hybrid.mapper.DeptMapper">
+<mapper namespace="com.hybrid.mapper.EmpMapper">
+	<sql id="empForm">
+		 select empno,
+				ename,
+				job,
+				mgr,
+				hiredate,
+				sal,
+				comm,
+				deptno
+		   from emp
+	</sql>
+	
+	<select id="selectAll" resultMap="">
+		
+	    
+	    
+	    
+	    
+	</select>
 
-
+	<select id="selectByEmpno">
+	    
+	    
+	    
+	    
+	</select>
+	
+	<resultMap id="empResultWithDept" type="com.hybrid.model.Emp">
+	    <id property="empno" column="emp_empno"/>
+	    <result property="ename" column="emp_ename"/>
+	    <result property="mgr" column="emp_mgr"/>
+	    <result property="hiredate" column="emp_hiredate"/>
+	    <association property="dept" javaType="com.hybrid.model.Dept">
+	        <id 	property="deptno" column="dept_deptno"/>
+	        <result property="dname" column="dept_dname"/>
+	        <result property="loc" column="dept_loc"/>
+	    </association>
+	</resultMap>
+	
+	
+	<select id="selectAllWithDept" resultMap="empResultWithDept">
+	    select e.empno		as emp_empno,
+	    	   e.ename		as emp_ename,
+	    	   e.mgr		as emp_mgr,
+	    	   e.hiredate	as emp_hiredate,
+	    	   d.deptno		as dept_deptno,
+	    	   d.dname		as dept_dname,
+	    	   d.loc		as dept_loc
+	      from emp e inner join dept d
+	        on e.deptno = d.deptno
+	</select>
+	
+	<select id="selectByEmpnoWithDept">
+	    
+	    
+	    
+	    
+	</select>
 </mapper>
