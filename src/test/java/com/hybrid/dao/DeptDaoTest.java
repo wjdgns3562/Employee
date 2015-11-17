@@ -23,5 +23,8 @@ public class DeptDaoTest {
 		list=dao.selectAllWithEmps();
 		log.info("dept size = " + list.size());		
 		dao.selectAllWithEmps();
+		
+		dao.selectByDeptno(10);
+		dao.selectByDeptnoWithEmps(20);
 	}
 }
