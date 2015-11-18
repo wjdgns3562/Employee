@@ -69,6 +69,8 @@ values
 --
 --
 
+
+select * from dept;
 select * from emp;
  
 select d.deptno as dept_deptno,

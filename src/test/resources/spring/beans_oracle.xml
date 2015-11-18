@@ -37,8 +37,12 @@
 	<property name="mapperInterface" value="com.hybrid.mapper.EmpMapper"></property>
 </bean>
 
-<bean id="oracleDeptdao"  class="com.hybrid.dao.DeptDao">
+<bean id="oracleDeptDao"  class="com.hybrid.dao.DeptDao">
 	<property name="deptMapper" ref="oracleDeptMapper"/>
+</bean>
+
+<bean id="oracleEmpDao" class="com.hybrid.dao.EmpDao">
+	<property name="empMapper" ref="oracleEmpMapper"/>
 </bean>
 
 <aop:aspectj-autoproxy/>
@@ -47,7 +51,8 @@
 <bean class="com.hybrid.aspect.TransactionAspect"/>
 
 <bean class="com.hybrid.service.DeptRegisterService">
-	<property name="deptDao" ref="oracleDeptdao"/>
+	<property name="deptDao" ref="oracleDeptDao"/>
+	<property name="empDao" ref="oracleEmpDao"/>
 	<property name="dataSource" ref="oracleDataSource"/>
 </bean>
 
