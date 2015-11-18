@@ -65,8 +65,9 @@
 	    )
 	    values
 	    (
+	    	<!-- NULL이 입력 가능하도록 하려면 jdbcType 사용 -->
 	    	#{empno},
-	    	#{ename,jdbcType=VARCHAR},
+	    	#{ename,jdbcType=VARCHAR}, 
 	    	#{job,jdbcType=VARCHAR},
 	    	#{mgr,jdbcType=NUMERIC},
 	    	#{hiredate,jdbcType=TIMESTAMP},
