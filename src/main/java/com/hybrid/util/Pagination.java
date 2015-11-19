@@ -132,5 +132,11 @@ public class Pagination {
 	public boolean isLastGroup() {
 		return (lastPage == totalPage) ? true : false;
 	}
-
+	
+	public int getStart(){
+		return firstItem - 1;
+	}
+	public int getLength(){
+		return lastItem - firstItem + 1;
+	}
 }

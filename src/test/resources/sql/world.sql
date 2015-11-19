@@ -58,7 +58,7 @@ select  id,
 -- Country
 --
   
-select * from city
+select * from city order by countrycode asc, name asc
 
 select * from country where code='KOR';
 
@@ -72,3 +72,28 @@ select ci.id,
     on ci.countrycode = co.code
  where co.code='KOR'
 
+
+ --
+ --
+ --
+ 
+ select id,
+		name,
+		countrycode,
+		district,
+		population
+   from city
+  order by countrycode asc, name asc
+  limit 40, 10   
+  --start,length
+  --from 0
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
