@@ -85,4 +85,17 @@
 	    )
 	</insert>
 	
+	<delete id="delete" parameterType="com.hybrid.model.Dept">
+	    delete from dept
+	     where deptno = #{deptno}
+	    
+	</delete>
+	
+	<delete id="deleteGreaterThan" parameterType="int">
+	    delete from dept
+	     where deptno >= #{deptno}
+	    
+	</delete>
+	
+	
 </mapper>

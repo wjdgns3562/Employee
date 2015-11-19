@@ -14,32 +14,48 @@ public class DeptDao {
 	
 	DeptMapper mapper;
 	
-	public void setDeptMapper(DeptMapper mapper){
+	public void setDeptMapper(DeptMapper mapper) {
 		this.mapper = mapper;
 	}
 	
-	public List<Dept> selectAll(){
+	public List<Dept> selectAll() {
 		List<Dept> list = mapper.selectAll();
-		log.info("Dept Size = " + list.size());
+		log.info("Dept size = " + list.size());
 		return list;
 	}
-	public List<Dept> selectAllWithEmps(){
+	public List<Dept> selectAllWithEmps() {
 		List<Dept> list = mapper.selectAllWithEmps();
-		log.info("Dept Size = " + list.size());
+		log.info("Dept size = " + list.size());
 		return list;
-	}
-	public Dept selectByDeptno(int deptno){
-		
-		return mapper.selectByDeptno(deptno);
-	}
-	public Dept selectByDeptnoWithEmps(int deptno){
-		
-		return mapper.selectByDeptnoWithEmps(deptno);
-		
 	}
 	
-	public int insert(Dept dept){
+	public Dept selectByDeptno(int deptno) {
+		
+		return mapper.selectByDeptno(deptno);
+		
+	}
+	public Dept selectByDeptnoWithEmps(int deptno) {
+		
+		return mapper.selectByDeptnoWithEmps(deptno);
+	}
+	
+	public int insert(Dept dept) {
 		return mapper.insert(dept);
 	}
+	
+	public int delete(Dept dept) {
+		return mapper.delete(dept);
+	}
+	
+	public int deleteGreaterThan(int deptno) {
+		return mapper.deleteGreaterThan(deptno);
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 }

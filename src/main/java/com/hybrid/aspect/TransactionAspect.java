@@ -11,28 +11,25 @@ public class TransactionAspect {
 	
 	static Log log = LogFactory.getLog(TransactionAspect.class);
 	
-	@Around("execution(public * com.hybrid.service.*.*(..))")
-	public Object around(ProceedingJoinPoint pjp) throws Throwable{
-		//before
+	@Around("execution(public * com.hybrid.service.*Service.*(..))")
+	public Object around(ProceedingJoinPoint pjp) throws Throwable {
+		// before
 		log.info("### before");
-		Object rtn = null;
+		Object rtn=null;
 		try {
 			rtn = pjp.proceed();
-			//afterReturnning
+			// afterReturnning
 			log.info("### afterReturnning");
 		} catch (Throwable t) {
-			//afterThrowing
+			// afterThrowing
 			log.info("### afterThrowing");
 			throw t;
 		} finally {
-			//after
+			// after
 			log.info("### after");
 		}
 		
-		
 		return rtn;
 	}
-	
-	
-	
+
 }

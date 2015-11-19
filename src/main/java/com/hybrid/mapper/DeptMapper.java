@@ -8,10 +8,13 @@ public interface DeptMapper {
 	
 	List<Dept> selectAll();
 	List<Dept> selectAllWithEmps();
-
+	
 	Dept selectByDeptno(int deptno);
 	Dept selectByDeptnoWithEmps(int deptno);
 	
 	int insert(Dept dept);
+	
+	int delete(Dept dept);
+	int deleteGreaterThan(int deptno);
 	
 }

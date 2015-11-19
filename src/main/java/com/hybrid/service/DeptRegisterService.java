@@ -17,51 +17,46 @@ import com.hybrid.model.Emp;
 public class DeptRegisterService {
 
 	DeptDao deptDao;
-	EmpDao	empDao;
-	
+	EmpDao empDao;
 	
 	public void setDeptDao(DeptDao dao) {
 		this.deptDao = dao;
 	}
 	
-	public void setEmpDao(EmpDao dao){
+	public void setEmpDao(EmpDao dao) {
 		this.empDao = dao;
 	}
-	
 	
 	DataSource dataSource;
 	
 	public void setDataSource(DataSource ds) {
 		this.dataSource = ds;
 	}
-	
-
-	public void regist(Dept dept){
 		
-		DataSourceTransactionManager transactionManager = null;
+	public void regist(Dept dept) {
+		
+		DataSourceTransactionManager transactionManager=null;
 		transactionManager = new DataSourceTransactionManager();
 		transactionManager.setDataSource(dataSource);
 		
 		TransactionDefinition td = new DefaultTransactionDefinition();
 		TransactionStatus ts = transactionManager.getTransaction(td);
 		
-		
-		try{
+		try {
 			deptDao.insert(dept);
 			
 			List<Emp> emps = dept.getEmps();
-			
-			if(emps != null)
-			for(Emp e : emps){
+
+			if (emps != null)
+			for (Emp e : emps) {
 				empDao.insert(e);
 			}
 			
 			transactionManager.commit(ts);
-		}catch(RuntimeException ex){
+		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-			transactionManager.rollback(ts);
+			transactionManager.rollback(ts);	
 		}
-		
 		
 	}
 }
