@@ -4,10 +4,8 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import com.hybrid.dao.DeptDao;
 import com.hybrid.dao.EmpDao;
@@ -16,11 +14,16 @@ import com.hybrid.model.Emp;
 
 public class DeptUnRegisterService {
 
+	static Log log = LogFactory.getLog(DeptUnRegisterService.class);
+	
 	DeptDao deptDao;
 	EmpDao empDao;
 	DataSource dataSource;
 	
 	public void setDeptDao(DeptDao dao) {
+		log.info("#############################");
+		log.info("setDeptDao()...");
+		log.info("#############################");
 		this.deptDao = dao;
 	}
 	public void setEmpDao(EmpDao dao) {
@@ -41,8 +44,12 @@ public class DeptUnRegisterService {
 	}
 	
 	public void unregist(int deptno) {
+		List<Dept> depts = deptDao.selectGreaterThan(deptno);
 		
-		deptDao.deleteGreaterThan(deptno);
+		for (Dept d : depts) {
+			unregist(d);
+		}
+		
 	}
 	
 	

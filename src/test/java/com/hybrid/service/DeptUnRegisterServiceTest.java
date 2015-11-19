@@ -24,7 +24,8 @@ public class DeptUnRegisterServiceTest {
 		Dept dept = new Dept();
 		dept.setDeptno(71);
 		
-		service.unregist(dept);
+//		service.unregist(dept);
+		service.unregist(70);
 		
 	}
 
