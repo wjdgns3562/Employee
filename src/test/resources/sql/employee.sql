@@ -63,6 +63,18 @@ create table city (
   constraint city_pk_id primary key (id)
 ) 
 
+
+select outer.*
+  from (select rownum r, inner.*
+  		  from (select *
+  		          from city
+  		         order by countrycode asc, name asc
+  		       ) inner
+  		)outer
+ where outer.r >=21
+   and outer.r <=30
+ 
+ 
 select count(*) from city
 select * from city where countrycode='KOR'
 
