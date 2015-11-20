@@ -23,7 +23,7 @@ public class DeptRegisterService {
 	public void setDeptDao(DeptDao dao) {
 		this.deptDao = dao;
 	}
-	
+	 
 	public void setEmpDao(EmpDao dao) {
 		this.empDao = dao;
 	}

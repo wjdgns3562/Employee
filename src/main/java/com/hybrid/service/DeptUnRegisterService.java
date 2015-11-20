@@ -50,7 +50,7 @@ public class DeptUnRegisterService {
 		for (Dept d : depts) {
 			unregist(d);
 		}
-		
+		 
 	}
 	
 	

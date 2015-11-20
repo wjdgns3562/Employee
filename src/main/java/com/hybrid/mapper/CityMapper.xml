@@ -53,4 +53,8 @@
 			#{population}
 		)
 	</insert>
+	
+	<delete id="deleteAll">
+	    delete from city
+	</delete>
 </mapper>

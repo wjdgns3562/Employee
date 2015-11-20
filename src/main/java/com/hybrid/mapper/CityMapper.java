@@ -13,4 +13,5 @@ public interface CityMapper {
 	  
 	int insert(City city);
 	int selectCount();
+	int deleteAll();
 }

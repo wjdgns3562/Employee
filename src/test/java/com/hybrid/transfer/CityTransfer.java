@@ -25,6 +25,9 @@ public class CityTransfer {
 		CityMapper mysqlCityMapper = (CityMapper) ctx.getBean("mysqlCityMapper");
 		CityMapper oracleCityMapper = (CityMapper) ctx.getBean("oracleCityMapper");
 		
+		oracleCityMapper.deleteAll();
+		
+		
 		List<City> list = mysqlCityMapper.selectAll();
 		
 		log.info("city size = " + list.size());
