@@ -63,19 +63,15 @@ create table city (
   constraint city_pk_id primary key (id)
 ) 
 
-
-select outer.*
-  from (select rownum r, inner.*
-  		  from (select *
-  		          from city
-  		         order by countrycode asc, name asc
-  		       ) inner
-  		)outer
- where outer.r >=21
-   and outer.r <=30
- 
- 
 select count(*) from city
+
+select rownum, c.*
+  from city c
+-- where rownum >= 11
+--   and rownum <= 20
+
+ order by countrycode asc, name asc
+
 select * from city where countrycode='KOR'
 
 delete from city
@@ -124,26 +120,36 @@ select d.deptno as dept_deptno,
     on d.deptno = e.deptno
     
     
-delete from dept where deptno = 61    
+delete from dept where deptno = 61  
 
 
---
---Country
---
+select outer.*
+  from ( select rownum r, inner.*
+  		   from ( select *
+  		   			from city 
+  		   		   order by countrycode asc, name asc
+  		        ) inner
+  	   ) outer
+ where outer.r >= 21
+   and outer.r <= 30
 
-drop table country
-
+/*
+ * Country
+ */
+drop table country   
+   
 create table country (
   code 				char(3),
   name 				char(52),
-  continent 		char(100),
+  continent 		char(50),
   region 			char(26),
   surfacearea 		numeric(10,2),
   indepyear 		numeric(6),
   population 		numeric(11),
-  lifeexpectancy	numeric(3,1),
+  lifeexpectancy 	numeric(3,1),
   gnp 				numeric(10,2),
   gnpold 			numeric(10,2),
+  
   localname 		char(45),
   governmentform 	char(45),
   headofstate 		char(60),
@@ -152,3 +158,17 @@ create table country (
   constraint pk_country_code primary key (code)
 )
 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 

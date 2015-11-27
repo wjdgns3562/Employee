@@ -1,11 +1,19 @@
 
 
-select count(*) 
+select * from city;
 
+select * from country;
+
+select count(*) from city;
+select count(*) from country;
+
+--
+-- Member Table
+-- DDL(Data Definition Language)
 drop table member;
 
 create table member (
-	id 				int auto_increment,
+	id				int auto_increment,
 	email			varchar(255),
 	name			varchar(255),
 	password 		varchar(255),
@@ -13,87 +21,97 @@ create table member (
 	constraint pk_id primary key (id)
 );
 
---
---Member CRUD(Create, Read, Update, Delete)
---DML(Data Manipulation Language)
---Create
+-- 
+-- Member CRUD (Create, Read, Update, Delete)
+-- DML(Data Manipulation Language)
+-- Create
 insert into member
 (email, name, password, register_date)
 values
-('xxx@yyy','홍길동3','1234','2015/11/11')
+('xxx@yyy', '홍길동', '1234', '2015/11/11')
 
---Read 
+-- Read
 select * from member;
 
---Update
-update member set name= '홍순이2', password ='9876' where id=5;
-
---Delete
-delete from member;
-
-
-
-
---City
+-- Update
+update member
+   set name = '홍순이2',
+       password = '12349876' 
+ where id = 5;
+ 
+-- Delete
+delete from member
+ where id = 5;
+ 
 --
---selectAll
-select  id,
-		name,
-		countryCode,
-		district,
-		population
-   from city
+-- City
+--
 
---selectByCountryCode(String countryCode)  
- select id,
-		name,
-		countryCode,
-		district,
-		population
-   from city
-  where countryCode = 'KOR'
-  
+-- selectAll() 
+select id,
+	   name,
+	   countrycode,
+	   district,
+	   population
+  from city
+
+-- selectByCountryCode(String countryCode)  
+select id,
+	   name,
+	   countrycode,
+	   district,
+	   population
+  from city
+ where countrycode = 'USA' 
   
 --
 -- Country
 --
-  
-select * from city order by countrycode asc, name asc
 
-select * from country where code='KOR';
+select * from city
+
+select * from country where code = 'KOR'
 
 select ci.id,
 	   ci.countrycode,
 	   ci.name,
 	   co.code,
-	   co.name,
+	   co.name, 
 	   co.headofstate
-  from city ci inner join country co
+  from city ci inner join country co 
     on ci.countrycode = co.code
- where co.code='KOR'
+ where co.code = 'USA'   
+
+select id,
+	   name,
+	   countrycode,
+	   district,
+	   population
+  from city
+ order by countrycode asc, name asc
+ limit 40, 10
+ -- start, length
+ -- from 0
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 
- --
- --
- --
- 
- select id,
-		name,
-		countrycode,
-		district,
-		population
-   from city
-  order by countrycode asc, name asc
-  limit 40, 10   
-  --start,length
-  --from 0
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
