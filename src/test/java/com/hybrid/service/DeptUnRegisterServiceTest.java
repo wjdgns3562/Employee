@@ -22,10 +22,10 @@ public class DeptUnRegisterServiceTest {
 		DeptUnRegisterService service = ctx.getBean(DeptUnRegisterService.class);
 
 		Dept dept = new Dept();
-		dept.setDeptno(81);
+		dept.setDeptno(71);
 		
 //		service.unregist(dept);
-		service.unregist(80);
+		service.unregist(70);
 		
 	}
 

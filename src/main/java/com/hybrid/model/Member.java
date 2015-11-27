@@ -8,10 +8,10 @@ import com.hybrid.exception.PasswordNotMatchingException;
  * Model Object
  * Value Object
  * Transfer Object
- * Beans 1. property
- * 		 2. event
- * 		 3. 기능(method)
- * */
+ * Beans 1. property ==> setter, getter
+ *       2. event
+ *       3. 기능(method)
+ */
 public class Member {
 	private long id;
 	private String email;
@@ -50,11 +50,12 @@ public class Member {
 		this.registerDate = registerDate;
 	}
 	
-	public void changePassword(String oidPassword, String newPassword){
-		if(!this.password.equals(oidPassword)){
+	public void changePassword(String oldPassword, String newPassword) {
+		if (!this.password.equals(oldPassword)) {
 			throw new PasswordNotMatchingException();
 		}
 		this.password = newPassword;
 	}
+	
 	
 }

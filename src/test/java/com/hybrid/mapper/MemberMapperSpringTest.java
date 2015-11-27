@@ -20,28 +20,32 @@ public class MemberMapperSpringTest {
 	static Log log = LogFactory.getLog(MemberMapperSpringTest.class);
 	
 	public static void main(String[] args) throws SQLException {
-//		test1();
+		test1();
 //		test2();
 		
-		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext("spring/beans_dao.xml");
+//		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext("spring/beans_dao.xml");
+//		
+//		MemberMapper memberMapper = ctx.getBean(MemberMapper.class);
+//		
+//		List<Member> list = memberMapper.selectAll();
+//		
+//		list.forEach(new Consumer<Member>() {
+//
+//			@Override
+//			public void accept(Member t) {
+//				log.info("email = " + t.getEmail());
+//				
+//			}
+//			
+//		});
 		
-		MemberMapper memberMapper = ctx.getBean(MemberMapper.class);
 		
-		List<Member> list = memberMapper.selectAll();
-		
-		list.forEach(new Consumer<Member>() {
-
-			@Override
-			public void accept(Member t) {
-				log.info("email = " + t.getEmail());
-				
-			}
-		});
 	}
 	
-	
-	static void test2(){	
+	static void test2() {
+		
 		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext("spring/beans_dao.xml");
+		
 		SqlSessionFactory sqlSessionFactory = ctx.getBean(SqlSessionFactory.class);
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		
@@ -51,13 +55,14 @@ public class MemberMapperSpringTest {
 
 			@Override
 			public void accept(Member m) {
-				log.info("id = "+m.getId());
+				log.info("id = " + m.getId());
 			}
+			
 		});
 		
 	}
 	
-	static void test1() throws SQLException{
+	static void test1() throws SQLException {
 		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext("spring/beans_dao.xml");
 		
 //		BasicDataSource dataSource = (BasicDataSource) ctx.getBean("oracleDataSource");
@@ -75,6 +80,5 @@ public class MemberMapperSpringTest {
 		log.info("productVersion = " + productVersion);
 		
 	}
-	
 
 }

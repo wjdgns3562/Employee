@@ -133,10 +133,18 @@ public class Pagination {
 		return (lastPage == totalPage) ? true : false;
 	}
 	
-	public int getStart(){
+	public int getStart() {
 		return firstItem - 1;
 	}
-	public int getLength(){
+	
+	public int getLength() {
 		return lastItem - firstItem + 1;
 	}
+	
+	
+	
+	
+	
+	
+	
 }

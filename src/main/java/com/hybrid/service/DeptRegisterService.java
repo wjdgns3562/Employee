@@ -23,7 +23,7 @@ public class DeptRegisterService {
 	public void setDeptDao(DeptDao dao) {
 		this.deptDao = dao;
 	}
-	 
+	
 	public void setEmpDao(EmpDao dao) {
 		this.empDao = dao;
 	}
@@ -33,6 +33,7 @@ public class DeptRegisterService {
 	public void setDataSource(DataSource ds) {
 		this.dataSource = ds;
 	}
+	
 	@Transactional
 	public void regist(Dept dept) {
 		

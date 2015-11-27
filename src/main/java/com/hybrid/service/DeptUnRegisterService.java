@@ -34,7 +34,8 @@ public class DeptUnRegisterService {
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
-	
+
+	@Transactional
 	public void unregist(Dept dept) {
 		List<Emp> emps = empDao.selectByDeptno(dept.getDeptno());
 		
@@ -43,6 +44,7 @@ public class DeptUnRegisterService {
 		}
 		deptDao.delete(dept);
 	}
+	
 	@Transactional
 	public void unregist(int deptno) {
 		List<Dept> depts = deptDao.selectGreaterThan(deptno);
@@ -50,7 +52,7 @@ public class DeptUnRegisterService {
 		for (Dept d : depts) {
 			unregist(d);
 		}
-		 
+		
 	}
 	
 	

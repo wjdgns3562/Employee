@@ -107,6 +107,28 @@
          where deptno >= #{deptno}
     </delete>
     
- 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 </mapper>
+
+
+
+
+
+
+

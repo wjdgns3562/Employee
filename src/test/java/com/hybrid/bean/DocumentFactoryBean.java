@@ -10,9 +10,7 @@ import org.w3c.dom.Document;
 public class DocumentFactoryBean implements FactoryBean<Document> {
 
 	DocumentBuilderFactory factory;
-	
 	Document document;
-	
 	ClassPathResource resource;
 	
 	public DocumentFactoryBean(DocumentBuilderFactory factory) {
@@ -22,12 +20,12 @@ public class DocumentFactoryBean implements FactoryBean<Document> {
 	public void setPath(String path) {
 		resource = new ClassPathResource(path);
 	}
-	
+		
 	@Override
 	public Document getObject() throws Exception {
-		DocumentBuilder builder = factory.newDocumentBuilder();
-		if(document==null){
-		document = builder.parse(resource.getInputStream());
+		if (document == null) {
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			document = builder.parse(resource.getInputStream());
 		}
 		return document;
 	}
@@ -40,7 +38,8 @@ public class DocumentFactoryBean implements FactoryBean<Document> {
 	@Override
 	public boolean isSingleton() {
 		return true;
+	
+	
 	}
-
 
 }

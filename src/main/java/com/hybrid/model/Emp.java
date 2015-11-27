@@ -5,7 +5,6 @@ import java.util.Date;
 import com.hybrid.exception.PasswordNotMatchingException;
 
 public class Emp {
-	
 	private int empno;
 	private String ename;
 	private String job;
@@ -13,9 +12,8 @@ public class Emp {
 	private Date hiredate;
 	private Float sal;
 	private Float comm;
-	private int deptno;
-	private Dept dept;		//Has-One
-	
+	private Dept dept;	// Has-One
+
 	public int getEmpno() {
 		return empno;
 	}
@@ -58,19 +56,11 @@ public class Emp {
 	public void setComm(Float comm) {
 		this.comm = comm;
 	}
-	public int getDeptno() {
-		return deptno;
-	}
-	public void setDeptno(int deptno) {
-		this.deptno = deptno;
-	}
 	public Dept getDept() {
 		return dept;
 	}
 	public void setDept(Dept dept) {
 		this.dept = dept;
 	}
-	
-	
 	
 }

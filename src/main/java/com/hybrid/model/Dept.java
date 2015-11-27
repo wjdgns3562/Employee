@@ -9,7 +9,7 @@ public class Dept {
 	private int deptno;
 	private String dname;
 	private String loc;
-	private List<Emp> emps; //Has-One
+	private List<Emp> emps; // Has-Many
 	
 	public int getDeptno() {
 		return deptno;
@@ -29,10 +29,13 @@ public class Dept {
 	public void setLoc(String loc) {
 		this.loc = loc;
 	}
+	
 	public List<Emp> getEmps() {
 		return emps;
 	}
 	public void setEmps(List<Emp> emps) {
 		this.emps = emps;
 	}
+	
+	
 }

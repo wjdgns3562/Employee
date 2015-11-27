@@ -10,6 +10,7 @@ public class City {
 	private String countryCode;
 	private String district;
 	private Integer population;
+		
 	public int getId() {
 		return id;
 	}
@@ -40,5 +41,7 @@ public class City {
 	public void setPopulation(Integer population) {
 		this.population = population;
 	}
+	
+	
 	
 }
