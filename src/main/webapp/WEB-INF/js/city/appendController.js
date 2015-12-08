@@ -14,7 +14,7 @@ app.config(function($routeProvider) {
 
 app.controller('appendController', function($scope, $http, URL) {
 	console.log("appendController...");
-	console.log("URL.POST_ITEM_APPEND_BASE = " + URL.POST_ITEM_APPEND_BASE);
+	console.log("URL.POST_ITEM_APPEND = " + URL.POST_ITEM_APPEND);
 	
 	$scope.$parent.title = "Append City View";
 	

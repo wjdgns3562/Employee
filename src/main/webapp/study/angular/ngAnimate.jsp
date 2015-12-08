@@ -21,14 +21,7 @@
 	           ];
 
 	var app = angular.module("employeeApp", deps);
-	//
-	// 1. /Employee/city/main.html    ==> 그외 다수
-	// 2. /city/page/10               ==> 이경진 / 김기복
-	// 3. /WEB-INF/view/city/main.jsp ==> 김훈
-	// 4. /Employee/city/              ==> 배재욱
-	// 5. /Employee/city/page/10       ==> 하정석
-	
-	
+
 	app.controller("mainController", function($scope, $http) {
 		console.log("mainController...");
 		

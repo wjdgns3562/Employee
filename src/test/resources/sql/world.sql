@@ -46,7 +46,8 @@ delete from member
 --
 -- City
 --
-
+select * from city
+ 
 -- selectAll() 
 select id,
 	   name,
@@ -62,13 +63,29 @@ select id,
 	   district,
 	   population
   from city
- where countrycode = 'USA' 
+ where countrycode = 'web' 
+ 
+insert into city
+(
+	 name,
+	 countryCode,
+	 district,
+	 population
+)
+values
+(
+	'java',
+	'web',
+	'programming',
+	1000000
+)
+ 
   
 --
 -- Country
 --
 
-select * from city
+
 
 select * from country where code = 'KOR'
 
@@ -93,25 +110,3 @@ select id,
  -- start, length
  -- from 0
  
- 
- 
- 
- 
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
