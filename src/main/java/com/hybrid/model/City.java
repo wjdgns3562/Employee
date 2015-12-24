@@ -1,16 +1,12 @@
 package com.hybrid.model;
 
-import java.util.Date;
-
-import com.hybrid.exception.PasswordNotMatchingException;
-
 public class City {
 	private int id;
 	private String name;
 	private String countryCode;
 	private String district;
 	private Integer population;
-		
+	
 	public int getId() {
 		return id;
 	}

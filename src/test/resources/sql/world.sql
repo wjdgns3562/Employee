@@ -28,7 +28,7 @@ create table member (
 insert into member
 (email, name, password, register_date)
 values
-('xxx@yyy', '홍길동', '1234', '2015/11/11')
+('xxx@hybrid.com', '홍길동', '1234', '2015/11/11')
 
 -- Read
 select * from member;

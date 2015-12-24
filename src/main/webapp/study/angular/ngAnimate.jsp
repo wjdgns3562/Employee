@@ -12,7 +12,7 @@
 <title>ngAnimate.jsp</title>
 
 <c:url var="URL_GET_PAGE_BASE" value="/city/page/"/>
-
+ 
 <script type="text/javascript">
 	var deps = ['ngRoute',
 	            'ngAnimate',

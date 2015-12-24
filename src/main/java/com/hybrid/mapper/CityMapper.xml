@@ -22,7 +22,7 @@
 			   district,
 			   population
 		  from city
-		 order by id desc
+		 order by id desc 
 		 limit #{start}, #{length} 
     </select>
     <select id="selectPage" 
@@ -40,6 +40,15 @@
 		   and outer.r &lt;= #{lastItem}
     </select>
     
+    <select id="selectById" parameterType="int" resultType="com.hybrid.model.City">
+        select id,
+			   name,
+			   countrycode,
+			   district,
+			   population
+		  from city
+		 where id = #{id}
+    </select>
     
     <select id="selectByCountryCode" parameterType="string" resultType="com.hybrid.model.City">
         select id,
@@ -50,7 +59,26 @@
 		  from city
 		 where countrycode = #{countryCode}
     </select>
-    
+    <insert id="insert" 
+        	parameterType="com.hybrid.model.City" 
+        	useGeneratedKeys="true"
+        	keyProperty="id"
+        	databaseId="mysql">
+        insert into city
+		(
+			name, 
+			countrycode, 
+			district, 
+			population
+		)
+		values
+		(
+			#{name, jdbcType=VARCHAR},
+			#{countryCode, jdbcType=VARCHAR},
+			#{district, jdbcType=VARCHAR},
+			#{population, jdbcType=NUMERIC}
+		)
+    </insert>
     <insert id="insert" 
         	parameterType="com.hybrid.model.City" 
         	databaseId="oracle">
@@ -61,7 +89,7 @@
 		(
 			id,
 			name, 
-			countryCode,
+			countrycode, 
 			district, 
 			population
 		)
@@ -75,27 +103,18 @@
 		)
     </insert>
     
-    <insert id="insert" 
-        	parameterType="com.hybrid.model.City" 
-        	useGeneratedKeys="true"
-        	keyProperty="id"
-        	databaseId="mysql">
-        insert into city
-		(
-			name, 
-			countryCode,
-			district, 
-			population
-		)
-		values
-		(
-			#{name, jdbcType=VARCHAR},
-			#{countryCode, jdbcType=VARCHAR},
-			#{district, jdbcType=VARCHAR},
-			#{population, jdbcType=NUMERIC}
-		)
-    </insert>
+    <update id="update" parameterType="com.hybrid.model.City">
+        update city
+           set name			= #{name},
+           	   countryCode	= #{countryCode},
+           	   district		= #{district},
+           	   population	= #{population}
+         where id = #{id}
+    </update>
     
+    <delete id="deleteById" parameterType="int">
+        delete from city where id = #{id}
+    </delete>
     
     <delete id="deleteAll">
         delete from city

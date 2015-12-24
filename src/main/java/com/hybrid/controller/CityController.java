@@ -1,7 +1,6 @@
 package com.hybrid.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.rmi.activation.ActivationGroupDesc.CommandEnvironment;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -17,10 +16,12 @@ import com.hybrid.command.CityCommand;
 import com.hybrid.model.City;
 import com.hybrid.model.CityList;
 import com.hybrid.model.CityPage;
+import com.hybrid.service.CityDetailService;
 import com.hybrid.service.CityListService;
+import com.hybrid.service.CityModifyService;
 import com.hybrid.service.CityPageService;
 import com.hybrid.service.CityRegisterService;
-import com.hybrid.util.Pagination;
+import com.hybrid.service.CityUnRegisterService;
 
 @Controller
 @RequestMapping("/city")
@@ -35,6 +36,16 @@ public class CityController {
 	
 	@Autowired
 	CityRegisterService cityRegisterService;
+	
+	@Autowired
+	CityDetailService cityDetailService;
+	
+	@Autowired
+	CityModifyService cityModifyService;
+	
+	@Autowired
+	CityUnRegisterService cityUnRegisterService; //delete
+	
 	
 	/*
 	 * main.html
@@ -82,7 +93,7 @@ public class CityController {
 		return "city/modify"; 
 	}
 	/*
-	 * delete.html
+	 * delete.html  = .html은 뷰 라는 의미
 	 */
 	@RequestMapping(value="/delete.html", method=RequestMethod.GET)
 	public String getDeleteView() {
@@ -106,6 +117,7 @@ public class CityController {
 	
 	/*
 	 * URL_GET_ITEM_BASE = [/city/{id}]
+	 * detail서비스
 	 * Accept = application/json
 	 */
 	@RequestMapping(value="/{id:[0-9]+}", method=RequestMethod.GET)
@@ -113,9 +125,7 @@ public class CityController {
 	public City getCityItem(@PathVariable int id) {
 		log.info("getCityItem()... id=" + id);
 		
-		City city = new City();
-		city.setId(id);
-		city.setName("seoul");
+		City city = cityDetailService.detail(id);
 		
 		return city;
 	}
@@ -142,11 +152,11 @@ public class CityController {
 	public CityCommand postCityAppend(@RequestBody CityCommand command) {
 		log.info("postCityAppend()... city id = " + command.getId());
 		
-		command.validate();
-		
-		if(!command.isValid()){
-			//throw
-		};
+//		command.validate();
+//		
+//		if (!command.isValid()) {
+//			// throw 
+//		}
 		
 		int id = cityRegisterService.regist(command.getCity());
 		command.setId(id);
@@ -159,11 +169,13 @@ public class CityController {
 	 */
 	@RequestMapping(value="/{id:[0-9]+}", method=RequestMethod.PUT)
 	@ResponseBody
-	public CityCommand putCityModify(@PathVariable int id, @RequestBody CityCommand city) {
+	public CityCommand putCityModify(@PathVariable int id, @RequestBody CityCommand command) {
 		log.info("putCityModify()... id = " + id);
-		log.info("putCityModify()... city id = " + city.getId());
+		log.info("putCityModify()... city id = " + command.getId());
 		
-		return city;
+		cityModifyService.modify(command.getCity());
+		
+		return command;
 	}
 	/*
 	 * 	URL_DELETE_ITEM_DELETE = [/city/{id}]
@@ -171,17 +183,11 @@ public class CityController {
 	 */
 	@RequestMapping(value="/{id:[0-9]+}", method=RequestMethod.DELETE)
 	@ResponseBody
-	public CityCommand deleteCity(@PathVariable int id) {
+	public void deleteCity(@PathVariable int id) {
 		log.info("deleteCity()... id = " + id);
-		CityCommand city = new CityCommand();
-		city.setId(id);
-		
-		return city;
+
+		cityUnRegisterService.unregist(id);
+
 	}
-	
-	
-	
-	
-	
-	
+
 }

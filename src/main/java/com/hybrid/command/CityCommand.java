@@ -1,11 +1,9 @@
 package com.hybrid.command;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.hybrid.exception.PasswordNotMatchingException;
 import com.hybrid.model.City;
 
 @JsonIgnoreProperties(value = "city")
@@ -15,52 +13,47 @@ public class CityCommand {
 	private String countryCode;
 	private String district;
 	private Integer population;
-		
+	
 	private Map<String, Object> errorMessage;
 	
 	public CityCommand() {
 		errorMessage = new HashMap<>();
 	}
 	
-	public Map<String, Object> getErrorMessage(){
-		
+	public Map<String, Object> getErrorMessage() {
 		return errorMessage;
 	}
 	
-	public void validate(){
+	public void validate() {
 		/*
 		 * name validation
-		 * 
 		 */
 		
 		/*
-		 * countryCode validation
-		 * 
+		 * coutryCode validation
 		 */
 		
 		/*
 		 * district validation
-		 * 
 		 */
 		
 		/*
 		 * population validation
-		 * 
 		 */
+		
 	}
 	
-	public boolean isValid(){
+	public boolean isValid() {
 		
-		if (errorMessage.size() > 0) {
+		if (errorMessage.size() > 0)
 			return false;
-		}
 		
 		return true;
 	}
 	
-	public City getCity(){
+	public City getCity() {
 		City c = new City();
-//		c.setId(id);
+		c.setId(id);
 		c.setName(name);
 		c.setCountryCode(countryCode);
 		c.setDistrict(district);
@@ -99,7 +92,6 @@ public class CityCommand {
 	public void setPopulation(Integer population) {
 		this.population = population;
 	}
-
 	
 	
 	
